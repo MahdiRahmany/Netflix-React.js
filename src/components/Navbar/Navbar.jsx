@@ -6,6 +6,7 @@ import profile_img from "../../assets/profile_img.png";
 import caret_icon from "../../assets/caret_icon.svg";
 import { useRef } from "react";
 import { useEffect } from "react";
+import { logout } from "../../firebase";
 
 const Navbar = () => {
   const navRef = useRef();
@@ -14,7 +15,8 @@ const Navbar = () => {
       if (window.scrollY >= 80) {
         navRef.current.classList.add("nav-dark");
       } else {
-        navRef.current.classList.remove("nav-dark");      }
+        navRef.current.classList.remove("nav-dark");
+      }
     });
   }, []);
 
@@ -39,7 +41,7 @@ const Navbar = () => {
           <img src={profile_img} alt="" className="profile" />
           <img src={caret_icon} alt="" />
           <div className="dropdown">
-            <p>Sign Out of Netflix</p>
+            <p onClick={() => logout()}>Sign Out of Netflix</p>
           </div>
         </div>
       </div>
