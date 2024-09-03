@@ -81,9 +81,21 @@
   color: #737373;
 }
 
-.form-switch span{
+.form-switch span {
   margin-left: 6px;
   color: #fff;
   font-weight: 500;
   cursor: pointer;
+}
+
+.login-spinner {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-spinner img {
+  width: 60px;
 }

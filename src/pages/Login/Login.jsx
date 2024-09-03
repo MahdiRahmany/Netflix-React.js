@@ -2,23 +2,31 @@ import "./Login.css";
 import logo from "../../assets/logo.png";
 import { useState } from "react";
 import { login, signup } from "../../firebase";
+import netflix_spinner from "../../assets/netflix_spinner.gif";
 
 const Login = () => {
   const [sign, setSign] = useState("Sign In");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState("");
 
   const user_auth = async (e) => {
     e.preventDefault();
+    setLoading(true);
     if (sign === "Sign In") {
       await login(email, password);
     } else {
       await signup(name, email, password);
     }
+    setLoading(false);
   };
 
-  return (
+  return loading ? (
+    <div className="login-spinner">
+      <img src={netflix_spinner} alt="" />
+    </div>
+  ) : (
     <div className="logo">
       <img src={logo} alt="" className="login-logo" />
       <div className="login-form">
